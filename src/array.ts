@@ -15,7 +15,7 @@ function tabuada (number: number){
 tabuada(5)
 
 
-function PontodeOnibus(paradas: number[][]): number{
+function pontoDeOnibus(paradas: number[][]): number{
     let passageirosEntram: number[] = []
     let passageirosSaem: number[] = []
     let passageirosFinal: number = 0
@@ -40,7 +40,7 @@ function PontodeOnibus(paradas: number[][]): number{
     return passageirosFinal
 }
 
-PontodeOnibus([[5,0], [10, 3], [3,7], [5,3]])
+pontoDeOnibus([[5,0], [10, 3], [3,7], [5,3]])
 
 
 function bingo(numeros: number[]){
@@ -59,3 +59,4 @@ function bingo(numeros: number[]){
 
 bingo([21, 13, 2, 7, 5, 14, 7, 15, 9, 10]) 
 
+module.exports = {tabuada, pontoDeOnibus, bingo}

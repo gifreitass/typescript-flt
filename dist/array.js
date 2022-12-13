@@ -12,7 +12,7 @@ function tabuada(number) {
     });
 }
 tabuada(5);
-function PontodeOnibus(paradas) {
+function pontoDeOnibus(paradas) {
     let passageirosEntram = [];
     let passageirosSaem = [];
     let passageirosFinal = 0;
@@ -31,7 +31,7 @@ function PontodeOnibus(paradas) {
     passageirosFinal = somaPassageirosEntram - somaPassageirosSaem;
     return passageirosFinal;
 }
-PontodeOnibus([[5, 0], [10, 3], [3, 7], [5, 3]]);
+pontoDeOnibus([[5, 0], [10, 3], [3, 7], [5, 3]]);
 function bingo(numeros) {
     let numerosBingo = [2, 9, 14, 7, 15];
     for (let i = 0; i < numerosBingo.length; i++) {
@@ -45,4 +45,5 @@ function bingo(numeros) {
     }
 }
 bingo([21, 13, 2, 7, 5, 14, 7, 15, 9, 10]);
+module.exports = { tabuada, pontoDeOnibus, bingo };
 //# sourceMappingURL=array.js.map

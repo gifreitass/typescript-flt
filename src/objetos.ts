@@ -4,17 +4,22 @@ interface iCarro{
     cor: string
 }
 
-function pesquisaMarcaCarro(carro: iCarro[], marca: string): iCarro[]{
+function pesquisaMarcaCarro(carro: iCarro[], marca: string): iCarro[] | null {
     const arrayMarca: iCarro[] = carro.filter(function (marcaCarro) {
         return marcaCarro.marca === marca
     })
+
+    if(arrayMarca.length === 0){
+        return null
+    } 
+    
     return arrayMarca
 }
 
-console.log(pesquisaMarcaCarro([{marca: 'Fiat', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2021, cor: 'preto'}, {marca: 'Ford', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2016, cor: 'vermelho'}], 'BMW'))
+pesquisaMarcaCarro([{marca: 'Fiat', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2021, cor: 'preto'}, {marca: 'Ford', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2016, cor: 'vermelho'}], 'BMW')
 
 
-function marcasDisponiveis(carros: iCarro[]): string[]{
+function marcasDisponiveis(carros: iCarro[]): string[] | null{
     let marcaCarros: string[] = []
     marcaCarros = carros.map(carro => carro.marca)
 
@@ -22,13 +27,17 @@ function marcasDisponiveis(carros: iCarro[]): string[]{
         return marcaCarros.indexOf(marca) === index
     })
 
+    if(marcaCarrosUnicos.length === 0){
+        return null
+    }
+
     return marcaCarrosUnicos
 }
 
-console.log(marcasDisponiveis([{marca: 'Fiat', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2021, cor: 'preto'}, {marca: 'Ford', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2016, cor: 'vermelho'}]))
+marcasDisponiveis([{marca: 'Fiat', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2021, cor: 'preto'}, {marca: 'Ford', ano: 2021, cor: 'preto'}, {marca: 'BMW', ano: 2016, cor: 'vermelho'}])
 
 
-function propriedadesCarros(carros: iCarro[], propriedadesCarros: string[]): any[]{
+function propriedadesCarros(carros: iCarro[], propriedadesCarros: string[]): any[] | null{
     const propriedadesEscolhidas: any[] = carros.reduce(function (accumulator: any[], current){
         let propriedades: any = {}
         propriedadesCarros.forEach(propriedade => {
@@ -39,13 +48,20 @@ function propriedadesCarros(carros: iCarro[], propriedadesCarros: string[]): any
 
         return accumulator
     }, [])
+
+    if(propriedadesEscolhidas.length === 0){
+        return null
+    }
     return propriedadesEscolhidas
 }
 
-console.log(propriedadesCarros([
+propriedadesCarros([
     {marca: 'Fiat', ano: 2021, cor: 'preto'}, 
     {marca: 'BMW', ano: 2021, cor: 'preto'}, 
     {marca: 'Ford', ano: 2021, cor: 'preto'}, 
     {marca: 'BMW', ano: 2016, cor: 'vermelho'}
     ], 
-    ['marca', 'ano']))
+    ['marca', 'ano'])
+
+
+module.exports = {pesquisaMarcaCarro, marcasDisponiveis, propriedadesCarros}
